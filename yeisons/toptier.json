@@ -1,48 +1,39 @@
 {
     "Tier1": [
         {
-            "name": "Lyrilusc - Bird Humming",
-            "url": "https://raw.githubusercontent.com/TheR20/ruleta-para-sorteos/refs/heads/master/Pokimons/SeasonUno/VenEx.png"
+            "name": "Lyrilusc - Bird Humming"
         },
         {
-            "name": "Deck B",
-            "url": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9e/latest/20241009230930/Venusaur_ex_%28Genes_Formidables_4_TCG_Pocket%29.png"
+            "name": "Blue-Eyes"
         }
     ],
     "Tier2": [
         {
-            "name": "Fleur",
-            "url": "https://example.com/fleur.png"
+            "name": "Fleur"
         },
         {
-            "name": "Ghostrick",
-            "url": "https://example.com/ghostrick.png"
+            "name": "Ghostrick"
         },
         {
-            "name": "Predaplant",
-            "url": "https://example.com/predaplant.png"
+            "name": "Predaplant"
         },
         {
-            "name": "Shaddoll",
-            "url": "https://example.com/shaddoll.png"
+            "name": "Shaddoll"
         },
         {
-            "name": "Sky Striker",
-            "url": "https://example.com/skystriker.png"
+            "name": "Sky Striker"
         }
     ],
     "Tier3": [
         {
-            "name": "Borrel Link",
-            "url": "https://example.com/borrellink.png"
+            "name": "Borrel Link"
         },
         {
-            "name": "Shark",
-            "url": "https://example.com/shark.png"
+            "name": "Shark"
         },
         {
-            "name": "Unchained",
-            "url": "https://example.com/unchained.png"
+            "name": "Unchained"
         }
     ]
 }
+

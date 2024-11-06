@@ -4,41 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles de la Carta</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0e2238;
-            color: #ffffff;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        #carta {
-            background-color: #1a3a55;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 50px;
-            width: 300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        #carta img {
-            width: 200px;
-            height: 300px;
-            object-fit: cover;
-        }
-        h2 {
-            color: #ffc107;
-        }
-        p {
-            font-size: 1.1em;
-        }
-        span {
-            color: #ffc107;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <header id="header">  </header>
+
+
+
     <div id="carta">
         <img src="" alt="Imagen de la carta" id="card-image">
         <h2>Nombre: <span id="nombre"></span></h2>
@@ -69,7 +41,12 @@
         }
 
         loadCarta();
+
+       
     </script>
+
+     <footer id="footer"> </footer>
+     <script src="js/scripts.js"></script>
 </body>
 </html>
 

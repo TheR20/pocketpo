@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deck List</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Enlace al archivo CSS -->
+    <style>
+        /* Estilo del grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .deck-item {
+            text-align: center;
+        }
+
+        .deck-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .deck-item button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .deck-item button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Deck List</h1>
+        <p>Click on a deck to view its cards!</p>
+    </div>
+
+    <div class="grid-container" id="deckGrid"></div>
+
+    <script>
+        // Función para cargar el archivo JSON
+        async function loadDecks() {
+            const response = await fetch('./yeisons/decks.json'); // Ruta al archivo decks.json
+            const data = await response.json();
+
+            // Llama a la función para renderizar los decks
+            renderDecks(data.decks);
+        }
+
+        // Función para renderizar los decks en el grid
+        function renderDecks(decks) {
+            const gridContainer = document.getElementById('deckGrid');
+            gridContainer.innerHTML = ''; // Limpiar el grid antes de agregar nuevos items
+
+            // Itera sobre cada deck
+            decks.forEach(deck => {
+                const deckItem = document.createElement('div');
+                deckItem.classList.add('deck-item');
+
+                // Crea la imagen del deck
+                const img = document.createElement('img');
+                img.src = deck.urlfotoDeck;
+                img.alt = `${deck.nombreDeck} Image`;
+
+                // Crea el botón con el nombre del deck
+                const button = document.createElement('button');
+                button.textContent = deck.nombreDeck;
+
+                // Agrega un evento para redirigir al clic del botón
+                button.onclick = () => {
+                    window.location.href = `deck-view.html?deckName=${encodeURIComponent(deck.nombreDeck)}`;
+                };
+
+                // Agregar la imagen y el botón al deckItem
+                deckItem.appendChild(img);
+                deckItem.appendChild(button);
+
+                // Agregar el deckItem al grid
+                gridContainer.appendChild(deckItem);
+            });
+        }
+
+        // Llama a la función para cargar los decks cuando la página se carga
+        loadDecks();
+    </script>
+</body>
+</html>
