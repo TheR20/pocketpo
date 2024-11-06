@@ -1,0 +1,73 @@
+{
+  "decks": [
+    {
+      "nombreDeck": "Lyrilusc - Bird Humming",
+      "cartas": [
+        {
+          "nombreCarta": "Lyrilusc - Sapphire Swallow"
+        },
+        {
+          "nombreCarta": "Effect Veiler"
+        },
+        {
+          "nombreCarta": "D.D. Crow"
+        },
+        {
+          "nombreCarta": "Lyrilusc - Recital Starling"
+        },
+        {
+          "nombreCarta": "Lyrilusc - Assembled Nightingale"
+        },
+        {
+          "nombreCarta": "Lyrilusc - Beryl Canary"
+        }
+      ]
+    },
+    {
+      "nombreDeck": "Blue-Eyes",
+      "cartas": [
+        {
+          "nombreCarta": "Blue-Eyes White Dragon"
+        },
+        {
+          "nombreCarta": "Alternative White Dragon"
+        },
+        {
+          "nombreCarta": "Sage with Eyes of Blue"
+        },
+        {
+          "nombreCarta": "Dragon Shrine"
+        },
+        {
+          "nombreCarta": "Silver's Cry"
+        },
+        {
+          "nombreCarta": "Azure-Eyes Silver Dragon"
+        }
+      ]
+    },
+    {
+      "nombreDeck": "Dark Magician",
+      "cartas": [
+        {
+          "nombreCarta": "Dark Magician"
+        },
+        {
+          "nombreCarta": "Dark Magician Girl"
+        },
+        {
+          "nombreCarta": "Magician's Rod"
+        },
+        {
+          "nombreCarta": "Magician Navigation"
+        },
+        {
+          "nombreCarta": "Eternal Soul"
+        },
+        {
+          "nombreCarta": "Dark Magic Circle"
+        }
+      ]
+    }
+  ]
+}

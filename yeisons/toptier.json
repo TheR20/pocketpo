@@ -1,12 +1,12 @@
 {
     "Tier1": [
         {
-            "name": "Deck A",
-            "url": "https://example.com/imageA.png"
+            "name": "Lyrilusc - Bird Humming",
+            "url": "https://raw.githubusercontent.com/TheR20/ruleta-para-sorteos/refs/heads/master/Pokimons/SeasonUno/VenEx.png"
         },
         {
             "name": "Deck B",
-            "url": "https://example.com/imageB.png"
+            "url": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9e/latest/20241009230930/Venusaur_ex_%28Genes_Formidables_4_TCG_Pocket%29.png"
         }
     ],
     "Tier2": [

@@ -1,0 +1,47 @@
+{
+    "cartas": [
+      {
+        "url": "https://raw.githubusercontent.com/TheR20/ruleta-para-sorteos/refs/heads/master/Pokimons/SeasonUno/VenEx.png",
+        "nombreCarta": "Lyrilusc - Sapphire Swallow",
+        "tipo": "Monstruo",
+        "descripcion": "Un pájaro que ayuda a convocar rápidamente a otros monstruos Lyrilusc.",
+        "obtener": true
+      },
+      {
+        "url": "https://raw.githubusercontent.com/TheR20/ruleta-para-sorteos/refs/heads/master/Pokimons/SeasonUno/VenEx.png",
+        "nombreCarta": "Effect Veiler",
+        "tipo": "Hechizo",
+        "descripcion": "Carta de efecto rápido para anular los efectos de monstruos.",
+        "obtener": true
+      },
+      {
+        "url": "https://raw.githubusercontent.com/TheR20/ruleta-para-sorteos/refs/heads/master/Pokimons/SeasonUno/VenEx.png",
+        "nombreCarta": "Lyrilusc - Recital Starling",
+        "tipo": "Monstruo",
+        "descripcion": "Una carta rápida para eliminar cartas en el cementerio del oponente.",
+        "obtener": false
+      },
+      {
+        "url": "https://raw.githubusercontent.com/TheR20/ruleta-para-sorteos/refs/heads/master/Pokimons/SeasonUno/VenEx.png",
+        "nombreCarta": "Lyrilusc - Assembled Nightingale",
+        "tipo": "Monstruo",
+        "descripcion": "Una carta rápida para eliminar cartas en el cementerio del oponente.",
+        "obtener": false
+      },
+      {
+        "url": "https://raw.githubusercontent.com/TheR20/ruleta-para-sorteos/refs/heads/master/Pokimons/SeasonUno/VenEx.png",
+        "nombreCarta": "Lyrilusc - Beryl Canary",
+        "tipo": "Monstruo",
+        "descripcion": "Una carta rápida para eliminar cartas en el cementerio del oponente.",
+        "obtener": false
+      },
+      {
+        "url": "https://limitlesstcg.nyc3.digitaloceanspaces.com/tpci/CEL/CEL_CC3_R_ES.png",
+        "nombreCarta": "D.D. Crow",
+        "tipo": "Monstruo",
+        "descripcion": "Una carta rápida para eliminar cartas en el cementerio del oponente.",
+        "obtener": false
+      }
+    ]
+  }
+  

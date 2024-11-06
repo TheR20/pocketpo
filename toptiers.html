@@ -1,97 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tier List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0e2238;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            text-align: center;
-            padding: 20px;
-        }
-        .header h1 {
-            margin: 0;
-        }
-        .content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .update-section, .tier-list {
-            background-color: #112b42;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
-        .update-section h2, .tier-list h2 {
-            color: #ffc107;
-        }
-        .updates {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9em;
-        }
-        .updates div {
-            width: 45%;
-        }
-        .tabs {
-            display: flex;
-            gap: 20px;
-            margin-top: 10px;
-            border-bottom: 2px solid #254f6e;
-            padding-bottom: 5px;
-        }
-        .tabs a {
-            color: #ffffff;
-            text-decoration: none;
-            padding: 10px;
-        }
-        .tabs a:hover {
-            color: #ffc107;
-        }
-        .tier {
-            padding: 20px;
-            background-color: #1a3a55;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-        .tier h3 {
-            margin-top: 0;
-            color: #ffc107;
-        }
-        .tier-item {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .tier-item img {
-            width: 100px;
-            margin-right: 20px;
-            border-radius: 8px;
-        }
-        .tier-item button {
-            font-size: 1.2em;
-            color: #ffffff;
-            background-color: #254f6e;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .tier-item button:hover {
-            background-color: #ffc107;
-            color: #0e2238;
-        }
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tier List</title>
+        <link rel="stylesheet" href="css/styles.css"> <!-- Enlace al archivo CSS -->
+    </head>
 <body>
     <div class="header">
         <h1>TIER LIST</h1>
@@ -164,7 +78,11 @@
 
                 const button = document.createElement('button');
                 button.textContent = item.name;
-                button.onclick = () => alert(`You clicked on ${item.name}!`);
+                  // Cambiar el onclick para redirigir con el nombre del item
+            button.onclick = () => {
+                // Redirigir a la página 'deck-view.html' pasando el nombre del deck como parámetro
+                window.location.href = `deck-view.html?deckName=${encodeURIComponent(item.name)}`;
+            };
 
                 tierItem.appendChild(img);
                 tierItem.appendChild(button);
