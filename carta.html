@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles de la Carta</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/Carta.css">
 </head>
 <body>
     <header id="header">  </header>
@@ -19,34 +20,10 @@
         <p>Obtener: <span id="obtener"></span></p>
     </div>
 
-    <script>
-        async function loadCarta() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const nombreCarta = urlParams.get('nombreCarta'); // Obtener el nombre de la carta desde la URL
-
-            const response = await fetch('./yeisons/cartas.json');
-            const data = await response.json();
-
-            const carta = data.cartas.find(c => c.nombreCarta === nombreCarta);
-
-            if (carta) {
-                document.getElementById('card-image').src = carta.url;
-                document.getElementById('nombre').textContent = carta.nombreCarta;
-                document.getElementById('tipo').textContent = carta.tipo;
-                document.getElementById('descripcion').textContent = carta.descripcion;
-                document.getElementById('obtener').textContent = carta.obtener;
-            } else {
-                console.log("Carta no encontrada");
-            }
-        }
-
-        loadCarta();
-
-       
-    </script>
-
      <footer id="footer"> </footer>
      <script src="js/scripts.js"></script>
+     <script src="js/Carta.js"></script>
+
 </body>
 </html>
 

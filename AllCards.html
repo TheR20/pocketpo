@@ -5,56 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card List</title>
     <link rel="stylesheet" href="css/styles.css">
-    <style>
-        /* Estilo del contenedor de cartas */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .card-item {
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .card-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            cursor: pointer; /* Cambiar el cursor para indicar que es clickeable */
-        }
-
-        .card-item h3 {
-            font-size: 1.1em;
-            margin: 10px 0 5px;
-        }
-
-        .card-item p {
-            font-size: 0.9em;
-            color: #555;
-        }
-
-        .search-bar {
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .search-bar input {
-            padding: 10px;
-            font-size: 1em;
-            width: 80%;
-            max-width: 400px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/AllCards.css">
 </head>
 <body>
 
+    <header id="header">  </header>
     <div class="header">
         <h1>Card List</h1>
         <p>Search for a card by name</p>
@@ -65,81 +20,10 @@
     </div>
 
     <div class="card-grid" id="cardGrid"></div>
-
-    <script>
-        let allCards = []; // Almacena todas las cartas cargadas
-
-        // Función para cargar el archivo JSON
-        async function loadCards() {
-            const response = await fetch('./yeisons/cartas.json'); // Ruta al archivo carta.json
-            const data = await response.json();
-
-            // Asignar los datos de las cartas a la variable global
-            allCards = data.cartas;
-
-            // Renderiza todas las cartas inicialmente
-            renderCards(allCards);
-        }
-
-        // Función para renderizar las cartas en el grid
-        function renderCards(cards) {
-            const cardGrid = document.getElementById('cardGrid');
-            cardGrid.innerHTML = ''; // Limpiar el grid antes de agregar nuevas cartas
-
-            // Itera sobre cada carta
-            cards.forEach(carta => {
-                const cardItem = document.createElement('div');
-                cardItem.classList.add('card-item');
-
-                // Crea la imagen de la carta
-                const img = document.createElement('img');
-                img.src = carta.url;
-                img.alt = `${carta.nombreCarta} Image`;
-                img.onclick = () => openCardDetails(carta.nombreCarta); // Añadir evento onclick
-
-                // Crea el nombre de la carta
-                const name = document.createElement('h3');
-                name.textContent = carta.nombreCarta;
-
-                // Crea el tipo de carta
-                const type = document.createElement('p');
-                type.textContent = `Tipo: ${carta.tipo}`;
-
-                // Crea la descripción de la carta
-                const description = document.createElement('p');
-                description.textContent = carta.descripcion;
-
-                // Agregar imagen, nombre, tipo y descripción a cardItem
-                cardItem.appendChild(img);
-                cardItem.appendChild(name);
-                cardItem.appendChild(type);
-                cardItem.appendChild(description);
-
-                // Agregar el cardItem al grid
-                cardGrid.appendChild(cardItem);
-            });
-        }
-
-        // Función para abrir la página de detalles con el nombre de la carta en la URL
-        function openCardDetails(nombreCarta) {
-            const url = `carta.html?nombreCarta=${encodeURIComponent(nombreCarta)}`;
-            window.location.href = url;
-        }
-
-        // Función para filtrar cartas por nombre
-        function filterCards() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filteredCards = allCards.filter(carta =>
-                carta.nombreCarta.toLowerCase().includes(query)
-            );
-
-            // Renderiza las cartas filtradas
-            renderCards(filteredCards);
-        }
-
-        // Llama a la función para cargar las cartas cuando la página se carga
-        loadCards();
-    </script>
+    <footer id="footer"> </footer>
+    
+    <script src="js/AllCards.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
 

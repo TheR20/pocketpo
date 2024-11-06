@@ -1,0 +1,31 @@
+ /* Estilo del grid */
+ .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.deck-item {
+    text-align: center;
+}
+
+.deck-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.deck-item button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.deck-item button:hover {
+    background-color: #45a049;
+}

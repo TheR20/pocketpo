@@ -1,0 +1,51 @@
+  /* Estilos generales */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #0e2238; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para las imágenes de las cartas */
+.card-img-top {
+    width: 250px;
+    height: 350px;
+    object-fit: cover; /* Mantener las proporciones y recortar si es necesario */
+}
+
+/* Cabecera */
+#deck-title {
+    text-align: center;
+    color: #ffc107; /* Color amarillo para el título */
+    margin-bottom: 30px;
+}
+
+/* Contenedor de cartas */
+.card {
+    background-color: #1a3a55; /* Fondo oscuro para las tarjetas */
+    border-radius: 8px; /* Bordes redondeados */
+    border: none; /* Quitar el borde */
+}
+
+/* Para los botones */
+button {
+    font-size: 1.2em;
+    color: #ffffff;
+    background-color: #254f6e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ffc107;
+    color: #0e2238;
+}
+
+/* Estilo para el contenedor de cartas */
+.card-column {
+    padding-bottom: 20px;
+}

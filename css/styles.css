@@ -11,58 +11,6 @@ body {
 
 /* Cabecera */
 .header {
-    padding: 20px;
-}
-.header h1 {
-    margin: 0;
-    color: #ffc107; /* Título en amarillo */
-}
-
-/* Contenido */
-.content {
-    padding: 20px;
-}
-
-/* Personalización de Bootstrap */
-.container {
-    background-color: #112b42; /* Fondo oscuro para el contenedor */
-    padding: 15px;
-    border-radius: 8px;
-}
-
-/* Sección de fondo personalizado */
-.text-center h1 {
-    color: #ffc107; /* Color amarillo para el título */
-}
-
-/* Cabecera */
-.header {
-    padding: 20px;
-}
-.header h1 {
-    margin: 0;
-    color: #ffc107; /* Título en amarillo */
-}
-
-/* Contenido */
-.content {
-    padding: 20px;
-}
-
-/* Personalización de Bootstrap */
-.container {
-    background-color: #112b42; /* Fondo oscuro para el contenedor */
-    padding: 15px;
-    border-radius: 8px;
-}
-
-/* Sección de fondo personalizado */
-.text-center h1 {
-    color: #ffc107; /* Color amarillo para el título */
-}
-
-/* Cabecera */
-.header {
     text-align: center;
     padding: 20px;
 }
@@ -75,72 +23,6 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-}
-
-/* Sección de actualización y lista de tiers */
-.update-section, .tier-list {
-    background-color: #112b42; /* Fondo oscuro */
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-}
-.update-section h2, .tier-list h2 {
-    color: #ffc107; /* Color de texto amarillo */
-}
-
-/* Sección de tabs */
-.tabs {
-    display: flex;
-    gap: 20px;
-    margin-top: 10px;
-    border-bottom: 2px solid #254f6e; /* Color del borde */
-    padding-bottom: 5px;
-}
-.tabs a {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px;
-}
-.tabs a:hover {
-    color: #ffc107;
-}
-
-/* Estilo para los items de tier */
-.tier {
-    padding: 20px;
-    background-color: #1a3a55; /* Fondo ligeramente más claro */
-    border-radius: 8px;
-    margin-top: 15px;
-}
-.tier h3 {
-    margin-top: 0;
-    color: #ffc107; /* Color de título amarillo */
-}
-
-/* Estilo de los items dentro de cada tier */
-.tier-item {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-.tier-item img {
-    width: 100px;
-    margin-right: 20px;
-    border-radius: 8px;
-}
-.tier-item button {
-    font-size: 1.2em;
-    color: #ffffff;
-    background-color: #254f6e;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.tier-item button:hover {
-    background-color: #ffc107;
-    color: #0e2238;
 }
 
 /* Contenedor principal que utiliza flexbox */
@@ -190,99 +72,21 @@ header {
 }
 
 
-/* Estilos para el footer */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: auto; /* Hace que el footer se desplace hasta el final */
-}
-
-/* Estilos para las tarjetas dentro de la sección */
-.section-cards {
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-    text-align: center;
-}
-
-.cards-container {
+body { 
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
+    flex-direction: column;
+    min-height: 100vh; 
+} 
 
-.card {
-    display: block;
-    width: 200px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    color: #333;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
+.main-content { 
+    flex: 1; 
+    min-height: calc(100vh - 2.5rem);   /* Resta la altura del footer de la altura total */ 
+} 
+    
+footer { background-color: #333; 
+    color: white; text-align: center;
+     padding: 10px 0;
+     width: 100%;
+     height: 2.5rem; 
+     margin-top: auto; 
 }
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.card h3 {
-    margin: 10px 0;
-    font-size: 1.5em;
-    color: #0056b3;
-}
-
-.card p {
-    font-size: 1em;
-    color: #666;
-}
-
-/* Para los botones */
-button {
-    font-size: 1.2em;
-    color: #ffffff;
-    background-color: #254f6e;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-button:hover {
-    background-color: #ffc107;
-    color: #0e2238;
-}
-
-#carta {
-    background-color: #1a3a55;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 50px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center; /* Centra los elementos horizontalmente */
-    justify-content: center; /* Centra los elementos verticalmente */
-}
-#carta img {
-    width: 200px;
-    height: 300px;
-    margin: 0 auto; /* Centra la imagen */
-    object-fit: cover;
-}
-h2 {
-    color: #ffc107;
-}
-p {
-    font-size: 1.1em;
-}
-span {
-    color: #ffc107;
-}
-

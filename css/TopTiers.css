@@ -1,0 +1,81 @@
+/* Cabecera */
+.header {
+    text-align: center;
+    padding: 20px;
+}
+.header h1 {
+    margin: 0;
+}
+
+/* Contenido */
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Sección de actualización y lista de tiers */
+.update-section, .tier-list {
+    background-color: #112b42; /* Fondo oscuro */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+.update-section h2, .tier-list h2 {
+    color: #ffc107; /* Color de texto amarillo */
+}
+
+/* Sección de tabs */
+.tabs {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    border-bottom: 2px solid #254f6e; /* Color del borde */
+    padding-bottom: 5px;
+}
+.tabs a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+}
+.tabs a:hover {
+    color: #ffc107;
+}
+
+/* Estilo para los items de tier */
+.tier {
+    padding: 20px;
+    background-color: #1a3a55; /* Fondo ligeramente más claro */
+    border-radius: 8px;
+    margin-top: 15px;
+}
+.tier h3 {
+    margin-top: 0;
+    color: #ffc107; /* Color de título amarillo */
+}
+
+/* Estilo de los items dentro de cada tier */
+.tier-item {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.tier-item img {
+    width: 100px;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+.tier-item button {
+    font-size: 1.2em;
+    color: #ffffff;
+    background-color: #254f6e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.tier-item button:hover {
+    background-color: #ffc107;
+    color: #0e2238;
+}
