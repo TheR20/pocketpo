@@ -119,54 +119,61 @@
 
         <div class="tabs">
             <a href="#">TOP TIERS</a>
-            <a href="#">POWER RANKINGS</a>
-            <a href="#">RUSH RANKINGS</a>
-            <a href="#">HISTORY</a>
         </div>
 
-        <div class="tier-list">
+        <div id="tier1" class="tier-list">
             <h2>TIER 1</h2>
             <p>Expected to be a large percentage of the top cut in a competitive tournament.*</p>
-            <div class="tier">
-                <div class="tier-item">
-                    <img src="https://via.placeholder.com/100" alt="Lyrilusc Image">
-                    <button onclick="alert('You clicked on LYRILUSC!')">LYRILUSC</button>
-                </div>
-            </div>
+            <div class="tier"></div>
+        </div>
 
-            <!-- Tier 2 -->
-      <div class="tier-list">
-          <div class="tier">
-              <h2>TIER 2</h2>
-              <p>Expected to be in the top cut of a competitive tournament, but not a large percentage.*</p>
-              <div class="tier-item">
-                  <img src="https://via.placeholder.com/100" alt="Lyrilusc Image">
-                  <button onclick="alert('You clicked on LYRILUSC!')">FLEUR</button>
-              </div>
-              <div class="tier-item">
-                  <img src="https://via.placeholder.com/100" alt="Lyrilusc Image">
-                  <button onclick="alert('You clicked on LYRILUSC!')">GHOSTRICK</button>
-              </div>
-          </div>
-      </div>
+        <div id="tier2" class="tier-list">
+            <h2>TIER 2</h2>
+            <p>Expected to be in the top cut of a competitive tournament, but not a large percentage.*</p>
+            <div class="tier"></div>
+        </div>
 
-      <!-- Tier 3 -->
-      <div class="tier-list">
-          <div class="tier">
-              <h2>TIER 3</h2>
-              <p>Expected to be played in a competitive tournament, with the possibility of being in the top cut.*</p>
-              <div class="tier-item">
-                  <img src="https://via.placeholder.com/100" alt="Lyrilusc Image">
-                  <button onclick="alert('You clicked on LYRILUSC!')">FLEUR</button>
-              </div>
-              <div class="tier-item">
-                  <img src="https://via.placeholder.com/100" alt="Lyrilusc Image">
-                  <button onclick="alert('You clicked on LYRILUSC!')">GHOSTRICK</button>
-              </div>
-          </div>
-      </div>
-
+        <div id="tier3" class="tier-list">
+            <h2>TIER 3</h2>
+            <p>Expected to be played in a competitive tournament, with the possibility of being in the top cut.*</p>
+            <div class="tier"></div>
         </div>
     </div>
+
+    <script>
+        // Función para cargar el archivo JSON
+        async function loadTierList() {
+            const response = await fetch('./yeisons/toptier.json'); // Carga el archivo JSON
+            const data = await response.json();
+
+            // Llama a la función para renderizar cada tier
+            renderTier('Tier1', data.Tier1, document.querySelector('#tier1 .tier'));
+            renderTier('Tier2', data.Tier2, document.querySelector('#tier2 .tier'));
+            renderTier('Tier3', data.Tier3, document.querySelector('#tier3 .tier'));
+        }
+
+        // Función para renderizar un tier específico
+        function renderTier(tierName, tierData, tierContainer) {
+            tierData.forEach(item => {
+                const tierItem = document.createElement('div');
+                tierItem.classList.add('tier-item');
+
+                const img = document.createElement('img');
+                img.src = item.url;
+                img.alt = `${item.name} Image`;
+
+                const button = document.createElement('button');
+                button.textContent = item.name;
+                button.onclick = () => alert(`You clicked on ${item.name}!`);
+
+                tierItem.appendChild(img);
+                tierItem.appendChild(button);
+                tierContainer.appendChild(tierItem);
+            });
+        }
+
+        // Llama a la función al cargar la página
+        loadTierList();
+    </script>
 </body>
 </html>

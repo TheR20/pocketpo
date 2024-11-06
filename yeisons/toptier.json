@@ -1,0 +1,48 @@
+{
+    "Tier1": [
+        {
+            "name": "Deck A",
+            "url": "https://example.com/imageA.png"
+        },
+        {
+            "name": "Deck B",
+            "url": "https://example.com/imageB.png"
+        }
+    ],
+    "Tier2": [
+        {
+            "name": "Fleur",
+            "url": "https://example.com/fleur.png"
+        },
+        {
+            "name": "Ghostrick",
+            "url": "https://example.com/ghostrick.png"
+        },
+        {
+            "name": "Predaplant",
+            "url": "https://example.com/predaplant.png"
+        },
+        {
+            "name": "Shaddoll",
+            "url": "https://example.com/shaddoll.png"
+        },
+        {
+            "name": "Sky Striker",
+            "url": "https://example.com/skystriker.png"
+        }
+    ],
+    "Tier3": [
+        {
+            "name": "Borrel Link",
+            "url": "https://example.com/borrellink.png"
+        },
+        {
+            "name": "Shark",
+            "url": "https://example.com/shark.png"
+        },
+        {
+            "name": "Unchained",
+            "url": "https://example.com/unchained.png"
+        }
+    ]
+}
