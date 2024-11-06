@@ -1,0 +1,107 @@
+/* Asegurarse de que el body y html ocupen el 100% del alto de la ventana */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal que utiliza flexbox */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* El contenido principal (main) ocupa el espacio restante */
+main {
+    flex-grow: 1;
+}
+
+header {
+    background-color: #333;
+    padding: 1em;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    color: #fff;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #ffcc00;
+}
+
+
+/* Estilos para el footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; /* Hace que el footer se desplace hasta el final */
+}
+
+/* Estilos para las tarjetas dentro de la sección */
+.section-cards {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    display: block;
+    width: 200px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.5em;
+    color: #0056b3;
+}
+
+.card p {
+    font-size: 1em;
+    color: #666;
+}
