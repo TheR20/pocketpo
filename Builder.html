@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid de Cartas</title>
+    <link rel="stylesheet" href="css/styles.css">
+        <input type="text" id="deckName" placeholder="Nombre del Deck">
+        <button onclick="saveDeck()">Guardar Deck</button>
+    <style>
+        /* Estilos del contenedor y grid */
+        .container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  padding: 10px;
+  gap: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  grid-template-rows: repeat(5, 300px);
+  gap: 10px;
+  border: 2px solid #ddd;
+  padding: 2px;
+  max-width: 850px; /* Ajusta este valor según tus necesidades */
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden; /* Oculta el scroll horizontal */
+}
+
+        .empty-grid {
+            background-color: #f3f3f3;
+            min-height: 250px; /* Establece una altura mínima para el grid vacío */
+        }
+
+        .card {
+            width: 150px;
+            height: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: grab;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eaeaea; /* Color de fondo para las celdas vacías */
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Asegura que la imagen cubra toda la celda sin distorsionarse */
+        }
+
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            font-size: 1em;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Colección de Cartas</h1>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Buscar carta..." onkeyup="filterCards()">
+    </div>
+
+    <div class="container">
+        <div class="grid empty-grid" id="emptyGrid"></div>
+      
+        <div class="grid" id="cardGrid"></div>
+      </div>
+
+
+    <script>
+        let allCards = []; // Array para almacenar las cartas cargadas del JSON
+
+        // Función para cargar las cartas desde el archivo JSON
+        async function loadCards() {
+            const response = await fetch('./yeisons/cartas.json'); // Ruta al archivo JSON
+            const data = await response.json();
+
+            allCards = data.cartas; // Asigna las cartas a la variable global
+            renderCards(allCards); // Renderiza todas las cartas inicialmente
+            createEmptyGridSpaces(20); // Crea 20 espacios en el grid vacío
+        }
+
+        // Función para renderizar las cartas en el grid
+        function renderCards(cards) {
+            const cardGrid = document.getElementById('cardGrid');
+            cardGrid.innerHTML = ''; // Limpiar el grid antes de agregar nuevas cartas
+
+            // Itera sobre cada carta y la agrega al grid
+            cards.forEach(carta => {
+                const cardItem = document.createElement('div');
+                cardItem.classList.add('card');
+                cardItem.draggable = true; // Hacer que la carta sea arrastrable
+                cardItem.ondragstart = event => drag(event, carta.nombreCarta); // Evento para el inicio del drag
+
+                // Imagen de la carta
+                const img = document.createElement('img');
+                img.src = carta.url;
+                img.alt = carta.nombreCarta;
+
+                cardItem.appendChild(img); // Agrega la imagen a la carta
+                cardGrid.appendChild(cardItem); // Agrega la carta al grid
+            });
+        }
+
+        // Función para crear espacios vacíos en el grid vacío
+        function createEmptyGridSpaces(count) {
+            const emptyGrid = document.getElementById('emptyGrid');
+            emptyGrid.innerHTML = ''; // Limpiar el grid vacío
+
+            for (let i = 0; i < count; i++) {
+                const space = document.createElement('div');
+                space.classList.add('card');
+                space.style.backgroundColor = "#eaeaea";
+                space.ondrop = event => drop(event);
+                space.ondragover = event => allowDrop(event);
+
+                emptyGrid.appendChild(space); // Agregar espacio vacío al grid
+            }
+        }
+
+        // Función para permitir el drop en los espacios vacíos
+        function allowDrop(event) {
+            event.preventDefault(); // Permitir el drop
+        }
+
+        // Función para manejar el drag (arrastre) de una carta
+        function drag(event, nombreCarta) {
+            event.dataTransfer.setData("nombreCarta", nombreCarta); // Guardar nombre de la carta en el evento
+        }
+
+        // Función para manejar el drop de una carta en el grid vacío
+        async function drop(event) {
+            event.preventDefault();
+            const nombreCarta = event.dataTransfer.getData("nombreCarta"); // Obtener el nombre de la carta arrastrada
+
+            const carta = allCards.find(c => c.nombreCarta === nombreCarta);
+            if (carta) {
+                // Crear un elemento img para la carta
+                const img = document.createElement('img');
+                img.src = carta.url;
+                img.alt = carta.nombreCarta;
+                img.style.width = "100%";
+                img.style.height = "100%";
+                img.style.objectFit = "cover";
+
+                event.target.innerHTML = ''; // Limpiar el espacio donde se soltará la carta
+                event.target.appendChild(img); // Agregar la imagen de la carta
+                event.target.ondrop = null; // Desactivar el drop después de agregar la carta
+                event.target.ondragover = null; // Desactivar el dragover después de agregar la carta
+
+                // Añadir evento para eliminar la carta al hacer clic en ella
+                img.onclick = () => {
+                    event.target.innerHTML = ''; // Vaciar el espacio
+                    event.target.ondrop = event => drop(event); // Reactivar el drop
+                    event.target.ondragover = event => allowDrop(event); // Reactivar el dragover
+                };
+            }
+        }
+
+        // Función para filtrar cartas por nombre
+        function filterCards() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredCards = allCards.filter(carta =>
+                carta.nombreCarta.toLowerCase().includes(query)
+            );
+
+            renderCards(filteredCards); // Renderizar las cartas filtradas
+        }
+
+        // Cargar las cartas cuando la página se carga
+        loadCards();
+    </script>
+
+</body>
+</html>

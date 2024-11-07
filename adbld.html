@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid de Cartas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Estilos del contenedor y grid */
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 200px);
+            grid-template-rows: repeat(5, 300px);
+            gap: 10px;
+            border: 2px solid #ddd;
+            padding: 2px;
+            max-width: 850px;
+            height: auto;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .empty-grid {
+            background-color: #f3f3f3;
+            min-height: 250px;
+        }
+        .card {
+            width: 150px;
+            height: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: grab;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eaeaea;
+        }
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .search-bar input {
+            padding: 10px;
+            font-size: 1em;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Colección de Cartas</h1>
+    
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Buscar carta..." onkeyup="filterCards()">
+    </div>
+
+    <!-- TextBox y Botón para Guardar Deck -->
+    <input type="text" id="deckName" placeholder="Nombre del Deck">
+    <button onclick="saveDeck()">Guardar Deck</button>
+
+    <div class="container">
+        <div class="grid empty-grid" id="emptyGrid"></div>
+        <div class="grid" id="cardGrid"></div>
+    </div>
+
+    <script>
+        let allCards = []; // Array para almacenar las cartas cargadas del JSON
+
+        async function loadCards() {
+            const response = await fetch('./yeisons/cartas.json');
+            const data = await response.json();
+            allCards = data.cartas;
+            renderCards(allCards);
+            createEmptyGridSpaces(20);
+        }
+
+        function renderCards(cards) {
+            const cardGrid = document.getElementById('cardGrid');
+            cardGrid.innerHTML = '';
+            cards.forEach(carta => {
+                const cardItem = document.createElement('div');
+                cardItem.classList.add('card');
+                cardItem.draggable = true;
+                cardItem.ondragstart = event => drag(event, carta.nombreCarta);
+                const img = document.createElement('img');
+                img.src = carta.url;
+                img.alt = carta.nombreCarta;
+                cardItem.appendChild(img);
+                cardGrid.appendChild(cardItem);
+            });
+        }
+
+        function createEmptyGridSpaces(count) {
+            const emptyGrid = document.getElementById('emptyGrid');
+            emptyGrid.innerHTML = '';
+            for (let i = 0; i < count; i++) {
+                const space = document.createElement('div');
+                space.classList.add('card');
+                space.ondrop = event => drop(event);
+                space.ondragover = event => allowDrop(event);
+                emptyGrid.appendChild(space);
+            }
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event, nombreCarta) {
+            event.dataTransfer.setData("nombreCarta", nombreCarta);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const nombreCarta = event.dataTransfer.getData("nombreCarta");
+            const carta = allCards.find(c => c.nombreCarta === nombreCarta);
+            if (carta) {
+                const img = document.createElement('img');
+                img.src = carta.url;
+                img.alt = carta.nombreCarta;
+                img.style.width = "100%";
+                img.style.height = "100%";
+                event.target.innerHTML = '';
+                event.target.appendChild(img);
+                event.target.dataset.nombreCarta = nombreCarta; 
+                img.onclick = () => {
+                    event.target.innerHTML = '';
+                };
+            }
+        }
+
+        function filterCards() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredCards = allCards.filter(carta =>
+                carta.nombreCarta.toLowerCase().includes(query)
+            );
+            renderCards(filteredCards);
+        }
+
+        async function saveDeck() {
+    const nombreDeck = document.getElementById('deckName').value;
+    const urlfotoDeck = 'https://your-image-url.com'; // URL de la imagen de la foto
+    const cartas = Array.from(document.getElementById('emptyGrid').children).map(space => {
+        const img = space.querySelector('img');
+        return { nombreCarta: img ? img.alt : "" };
+    });
+
+    const newDeck = {
+        nombreDeck,
+        urlfotoDeck,
+        cartas
+    };
+
+    try {
+        const response = await fetch('http://localhost:3000/save-deck', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newDeck)
+        });
+
+        if (response.ok) {
+            console.log('Deck guardado correctamente');
+        } else {
+            console.error('Error al guardar el deck');
+        }
+    } catch (error) {
+        console.error('Error en la solicitud:', error);
+    }
+}
+
+
+        loadCards();
+    </script>
+
+</body>
+</html>
