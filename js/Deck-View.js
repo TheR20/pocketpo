@@ -9,6 +9,7 @@
         const response = await fetch('./yeisons/cartas.json'); // Cargar el archivo cartas.json
         return response.json();
     }
+    
 
     // Cargar el archivo JSON de decks
     async function loadDeck() {
